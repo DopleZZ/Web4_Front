@@ -1,0 +1,17 @@
+<div class="main-page">
+    <app-interactive-background></app-interactive-background>
+    <div class="main-content">
+        <app-header></app-header>
+        <div class="content-grid">
+            <div class="form-section">
+                <app-point-form (formSubmit)="handleFormSubmit($event)" (rChange)="handleRChange($event)"></app-point-form>
+            </div>
+            <div class="graph-section">
+                <app-graph [r]="r" [points]="points" (graphClick)="handleGraphClick($event)"></app-graph>
+            </div>
+            <div class="results-section">
+                <app-results-table [results]="results"></app-results-table>
+            </div>
+        </div>
+    </div>
+</div>

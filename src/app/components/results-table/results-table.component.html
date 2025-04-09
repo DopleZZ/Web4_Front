@@ -1,0 +1,76 @@
+<div class="results-container">
+  <div class="table-wrapper">
+    <table class="results-table">
+      <thead>
+      <tr>
+        <th>X</th>
+        <th>Y</th>
+        <th>R</th>
+        <th>Попадание</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="result-row" *ngFor="let result of paginatedResults">
+        <td class="mono">{{ result.x }}</td>
+        <td class="mono">{{ result.y }}</td>
+        <td class="mono">{{ result.r }}</td>
+        <td>
+            <span class="status-badge" [class.hit]="result.hit" [class.miss]="!result.hit">
+              {{ result.hit ? 'Да' : 'Нет' }}
+            </span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pagination">
+    <div class="rows-select">
+      <span>Строк на странице:</span>
+      <select [(ngModel)]="pageSize" (change)="onPageSizeChange()">
+        <option *ngFor="let size of pageSizeOptions" [value]="size">{{ size }}</option>
+      </select>
+    </div>
+
+    <div class="page-controls">
+      <span class="page-info">
+        {{ startIndex }}-{{ endIndex }} из {{ results.length }}
+      </span>
+
+      <div class="buttons">
+        <button
+          class="page-button"
+          (click)="onPageChange(1)"
+          [disabled]="currentPage === 1"
+          title="Первая страница"
+        >
+          ⟪
+        </button>
+        <button
+          class="page-button"
+          (click)="onPageChange(currentPage - 1)"
+          [disabled]="currentPage === 1"
+          title="Предыдущая страница"
+        >
+          ⟨
+        </button>
+        <button
+          class="page-button"
+          (click)="onPageChange(currentPage + 1)"
+          [disabled]="currentPage === totalPages"
+          title="Следующая страница"
+        >
+          ⟩
+        </button>
+        <button
+          class="page-button"
+          (click)="onPageChange(totalPages)"
+          [disabled]="currentPage === totalPages"
+          title="Последняя страница"
+        >
+          ⟫
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

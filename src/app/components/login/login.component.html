@@ -1,0 +1,21 @@
+<div class="auth-container">
+  <app-interactive-background></app-interactive-background>
+  <div class="auth-form-container">
+    <div class="auth-form-content">
+      <h1>Вход</h1>
+      <div *ngIf="error" class="error-message">{{ error }}</div>
+      <form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="auth-form">
+        <div class="form-field">
+          <input type="text" [(ngModel)]="username" name="username" placeholder="Логин" required />
+        </div>
+        <div class="form-field">
+          <input type="password" [(ngModel)]="password" name="password" placeholder="Пароль" required />
+        </div>
+        <button type="submit" class="submit-button">Войти</button>
+      </form>
+      <p class="auth-link">
+        Нет аккаунта? <a routerLink="/register">Зарегистрироваться</a>
+      </p>
+    </div>
+  </div>
+</div>
