@@ -1,0 +1,26 @@
+<div class="auth-container">
+  <app-interactive-background></app-interactive-background>
+  <div class="auth-form-container">
+    <div class="auth-form-content">
+      <h1>Регистрация</h1>
+      <div *ngIf="message" [ngClass]="{'success': message.includes('успешно'), 'error': !message.includes('успешно')}">
+        {{ message }}
+      </div>
+      <form (ngSubmit)="onSubmit()" #registerForm="ngForm" class="auth-form">
+        <div class="form-field">
+          <input type="text" [(ngModel)]="username" name="username" placeholder="Логин" required />
+        </div>
+        <div class="form-field">
+          <input type="password" [(ngModel)]="password" name="password" placeholder="Пароль" required />
+        </div>
+        <div class="form-field">
+          <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="Подтвердите пароль" required />
+        </div>
+        <button type="submit" class="submit-button">Зарегистрироваться</button>
+      </form>
+      <p class="auth-link">
+        Уже есть аккаунт? <a routerLink="/">Войти</a>
+      </p>
+    </div>
+  </div>
+</div>
